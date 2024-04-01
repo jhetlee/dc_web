@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    DEVICE_DETAIL
+{% endblock %}
+
+{% block body_block %}
+{% if user.is_authenticated %}
+<section id="device-detail">
+<div class="container">
+<h1>{{device.hostname}}</h1>
+
+<h2>{{device.datacenter_location}}</h2>
+<p>{{device.management_ip}}</p>
+<p><a href="{% url 'interfaces' device.slug %}">interfaces</a></p>
+<p>{{device.remote_access}}</p>
+<p>{{device.device_os}}</p>
+<p>{{device.slug}}</p>
+    </div>
+    </section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    DC DEVICES
+{% endblock %}
+
+
+{% block body_block %}
+
+{% load crispy_forms_tags %}
+
+<!--Login-->
+<section id="class-form">
+<div class="container py-5">
+  <h1>Login</h1>
+  <form method="POST" >
+    {% csrf_token %}
+    <div class="form-control">
+    {{ login_form|crispy }}
+      </div>
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+  <p class="text-center">Don't have an account? <a href="/dc_app/register/">Create an account</a>.</p>
+</div>
+</section>
+{% endblock %}

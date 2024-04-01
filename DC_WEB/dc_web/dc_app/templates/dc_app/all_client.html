@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block title_block %}
+    All Client
+{% endblock %}
+
+{% block body_block %}
+
+
+{% for client in all_client %}
+{{client.id}}
+{{client.client_name}}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    ALL INTERFACES
+{% endblock %}
+
+{% block body_block %}
+{% if user.is_authenticated %}
+<p></p>
+<div class="container">
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+        <th scope="col">Device</th>
+      <th scope="col">Interface ID</th>
+      <th scope="col">Interface Description</th>
+      <th scope="col">SFP Type</th>
+        <th scope="col">SFP Brand</th>
+        <th scope="col">SFP SN</th>
+         <th scope="col">Client</th>
+    </tr>
+  </thead>
+
+        <tbody>
+        {% for interface in all_interfaces %}
+
+    <tr>
+        <td>{{interface.device.hostname}}</td>
+        {% if not interface.has_client %}
+          <td><a href="">{{interface.interface_id}}</a></td>
+          <td>{{interface.interface_description}}</td>
+          <td>{{interface.sfp_type}}</td>
+            <td>{{interface.sfp_brand}}</td>
+           <td>{{interface.sfp_sn}}</td>
+            <td><a href="{% url 'client_form' interface.id %}">Create client</a></td>
+
+        {% else %}
+        <td><a href="">{{interface.interface_id}}</a></td>
+          <td>{{interface.interface_description}}</td>
+          <td>{{interface.sfp_type}}</td>
+            <td>{{interface.sfp_brand}}</td>
+           <td>{{interface.sfp_sn}}</td>
+        <td><a href="{% url 'client_detail' interface.id %}">{{interface.client.client_name}}</a></td>
+        {% endif %}
+
+    </tr>
+  {% endfor %}
+  </tbody>
+
+</table>
+
+
+    </div>
+{% endif %}
+{% endblock %}

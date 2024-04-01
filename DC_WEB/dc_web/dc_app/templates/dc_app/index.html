@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    INDEX
+{% endblock %}
+
+{% block body_block %}
+
+
+<div class="container" id="index-id">
+
+    <h1>Data Centers</h1>
+<ul>
+    {% for datacenter in datacenters %}
+    <li><h2><a href="{% url 'dc_devices' datacenter.id %}">{{datacenter.location}}</a></h2></li>
+    <hr>
+    {% endfor %}
+</ul>
+    </div>
+
+{% endblock %}

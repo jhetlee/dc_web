@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block title_block %}
+    All Client
+{% endblock %}
+
+{% block body_block %}
+
+
+
+<h2>Delete Post</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  <p>Are you sure that you want to delete the post "{{post.client_name}}"?</p>
+  <div>
+    <button type="submit">Yes, Delete</button>
+    <a href="/">Cancel</a>
+  </div>
+</form>
+
+{% endblock %}

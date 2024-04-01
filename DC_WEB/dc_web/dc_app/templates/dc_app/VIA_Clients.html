@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    ALL INTERFACES
+{% endblock %}
+
+{% block body_block %}
+{% if user.is_authenticated %}
+<p></p>
+<div class="container">
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+
+        <th scope="col">interface</th>
+      <th scope="col">SR No.</th>
+      <th scope="col">Client</th>
+      <th scope="col">Subscription</th>
+        <th scope="col">Bandwidth</th>
+        <th scope="col">IP Block</th>
+    </tr>
+  </thead>
+
+        <tbody>
+        {% for field in all_via_client%}
+    <tr>
+
+        <td>{{field.interface}}</td>
+      <td>{{field.sr_number}}</td>
+      <td>{{field.client_name}}</td>
+      <td>{{field.subscription}}</td>
+        <td>{{field.bandwidth}}</td>
+       <td>{{field.ip_block}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+
+</table>
+
+
+    </div>
+{% endif %}
+{% endblock %}

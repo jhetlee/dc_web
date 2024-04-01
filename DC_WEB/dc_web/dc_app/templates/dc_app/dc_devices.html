@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    DC DEVICES
+{% endblock %}
+
+
+{% block body_block %}
+{% if user.is_authenticated %}
+<div class="container" id="dc-devices-id">
+    <h1>{{ dc_location}}</h1>
+    <div class="button-class">
+    <button type="button"><a href="{% url 'device_form' dc_location.id %}" >Create device</a></button>
+    </div>
+        <ul>
+
+ {% for device in identified_dc_devices %}
+
+     <div class="card" style="width: 16rem; float:left;">
+    <div class="card-body">
+    <h5 class="card-title"><a href="{% url 'device_detail' device.slug %}">{{ device.hostname }}</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{device.management_ip}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{device.datacenter_location}}</h6>
+     </div>
+         </div>
+     {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

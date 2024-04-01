@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    Registration
+{% endblock %}
+
+
+{% block body_block %}
+
+{% load crispy_forms_tags %}
+
+<!--Register-->
+<section id="class-form">
+<div class="container py-5">
+	<h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{% for field in form %}
+		<div class="form-control">
+		{{field.label}}
+		{{field}}
+			</div>
+		{% endfor %}
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/dc_app/login/">login</a> instead.</p>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block title_block %}
+    DC Form
+{% endblock %}
+
+{% block body_block %}
+
+
+
+<form action="updaterecord/{{mymember.id}}" method="POST">
+{% csrf_token %}
+
+
+    <p>SR Number</p>
+    <input name="sr_number" value="{{mymember.sr_number}}">
+    <p>Client Name</p>
+    <input name="client_name" value="{{mymember.client_name}}">
+    <p>Subscription</p>
+    <input name="subscription" value="{{mymember.subscription}}">
+    <p>VLAN</p>
+    <input name="vlan" value="{{mymember.vlan}}">
+    <p>bandwidth</p>
+    <input name="bandwidth" value="{{mymember.bandwidth}}">
+    <p>IP Block</p>
+    <input name="ip_block" value="{{mymember.ip_block}}">
+
+    <input type="submit" value="submit">
+</form>
+{% endblock %}

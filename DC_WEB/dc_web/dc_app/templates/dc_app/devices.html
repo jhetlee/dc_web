@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    DEVICES
+{% endblock %}
+
+
+{% block body_block %}
+
+{% if user.is_authenticated %}
+<div class="container">
+
+<ul>
+    <h1>ALL DEVICES</h1>
+ {% for device in devices %}
+
+     <div class="card" style="width: 16rem; float:left;">
+    <div class="card-body">
+    <h5 class="card-title"><a href="{% url 'device_detail' device.slug %}">{{ device.hostname }}</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{device.management_ip}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{device.datacenter_location}}</h6>
+     </div>
+         </div>
+     {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

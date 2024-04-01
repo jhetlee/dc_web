@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block title_block %}
+    DC Form
+{% endblock %}
+
+{% block body_block %}
+
+
+<section id="comment-form">
+<form>
+    <label for="interface">Interface:</label>
+    <select name="interface_id" id="interface">
+ {% for interface in interfaces %}
+        <option>
+    {{interface.interface_id}}
+            </option>
+    {% endfor %}
+        </select>
+    <label for="subscription">subscription</label>
+    <select name="client_subscription" id="subscription">
+{% for subscription in subscriptions %}
+    <option>
+    {{subscription.client_subscription}}
+        </option>
+
+    {% endfor %}
+</select>
+    {% for field in form %}
+    {{ field.label }}
+    {{ field }}
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>
+</section>
+{% endblock %}

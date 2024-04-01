@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block title_block %}
+    All Client
+{% endblock %}
+
+{% block body_block %}
+
+{{interface.client.sr_number}}
+{{interface.client.client_name}}
+{{interface.client.subscription}}
+{{interface.client.vlan}}
+{{interface.client.bandwidth}}
+{{interface.client.ip_block}}
+
+
+<a href="{% url 'client_update' interface.client.id %}">Update</a>
+{% endblock %}

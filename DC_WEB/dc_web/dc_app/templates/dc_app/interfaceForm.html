@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title_block %}
+    Interface Form
+{% endblock %}
+
+{% block body_block %}
+
+<section id="comment-form">
+    <h2>Interface</h2>
+    <form method="POST">
+    {% csrf_token %}
+        {% for field in form %}
+        <div class="form-control" {% if form_field.errors %} invalid {% endif %}>
+        {{field.label}}
+        {{field}}
+        {{field.errors}}
+            </div>
+        {% endfor %}
+
+        <button type="submit">Save</button>
+    </form>
+</section>
+
+
+{% endblock %}
